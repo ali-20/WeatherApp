@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     },
     weatherInfoContainer: {
         flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     unitInterchangeContainer: {
         marginTop: -10,

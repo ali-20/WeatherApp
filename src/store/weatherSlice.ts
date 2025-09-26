@@ -62,7 +62,10 @@ const weatherSlice = createSlice({
             })
             .addCase(loadWeather.fulfilled, (state, action) => {
                 state.loading = false;
-                state.data = action.payload;
+                if (action.payload) {
+                    state.data = action.payload;
+                }
+
             })
             .addCase(loadWeather.rejected, (state, action) => {
                 state.loading = false;
