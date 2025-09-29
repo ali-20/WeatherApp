@@ -6,13 +6,23 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../store'
 import weatherService from '../services/weatherService'
 import { MemoizedList } from './MemoizedList'
+import { useNavigation } from '@react-navigation/native'
+import { EScreens } from '../enums/EAppStack'
 
 const UpcomingWeatherInfo = () => {
+    const navigation = useNavigation();
     const { data, loading, isCelcius } = useSelector(
         (state: RootState) => state.weather
     );
 
     const insets = useSafeAreaInsets();
+
+
+    const onItemPress = () => {
+        navigation.navigate(EScreens.UPCOMING_WEATHER_DETAIL)
+    }
+
+
     const renderWeatherCapsule = ({ item, index }) => {
 
         return (
@@ -20,7 +30,7 @@ const UpcomingWeatherInfo = () => {
                 icon={item?.condition?.icon}
                 label={weatherService.formatEpoch(item?.time_epoch, { hour: "2-digit", minute: "2-digit" })}
                 value={isCelcius ? `${item?.temp_c}°` : `${item?.temp_f} F`}
-                onPress={() => { }}
+                onPress={onItemPress}
             />
         )
     }
@@ -33,7 +43,7 @@ const UpcomingWeatherInfo = () => {
             {
                 loading ?
                     null :
-                 <MemoizedList
+                    <MemoizedList
                         showsHorizontalScrollIndicator={false}
                         contentContainerStyle={styles.capsuleList}
                         horizontal

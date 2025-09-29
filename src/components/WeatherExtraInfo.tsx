@@ -4,11 +4,19 @@ import BlurredButton from './BlurredButton'
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 import Shimmer from './Shimmer';
+import { useNavigation } from '@react-navigation/native';
+import { EScreens } from '../enums/EAppStack';
 
 const WeatherExtraInfo = () => {
+    const navigation = useNavigation();
     const { data, loading } = useSelector(
         (state: RootState) => state.weather
     );
+
+
+    const onWeatherInfoPress = () => {
+        navigation.navigate(EScreens.WEATHER_DETAILS)
+    }
 
     return (
         <View style={styles.container} >
@@ -27,21 +35,21 @@ const WeatherExtraInfo = () => {
                             icon={require("../assets/umbrella.png")}
                             label="RainFall"
                             value={data?.current?.precip_mm! > 0 ? `${data?.current?.precip_mm} mm` : "No Rain"}
-                            onPress={() => { }}
+                            onPress={onWeatherInfoPress}
                             iconStyles={styles.buttonIcon}
                         />
                         <BlurredButton
                             icon={require("../assets/wind.png")}
                             label="Wind"
                             value={`${data?.current.wind_kph} kph`}
-                            onPress={() => { }}
+                            onPress={onWeatherInfoPress}
                             iconStyles={styles.buttonIcon}
                         />
                         <BlurredButton
                             icon={require("../assets/humidity.png")}
                             label="Humidity"
                             value={`${data?.current.humidity} %`}
-                            onPress={() => { }}
+                            onPress={onWeatherInfoPress}
                             iconStyles={styles.buttonIcon}
                         />
                     </>

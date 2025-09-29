@@ -96,7 +96,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 20
+        marginTop: 20,
+        gap:20
     },
     cardItem: {
         justifyContent: 'center',
@@ -104,8 +105,8 @@ const styles = StyleSheet.create({
 
     },
     cardItemIcon: {
-        width: 68,
-        height: 68,
+        width: 72,
+        height: 72,
 
         resizeMode: "cover",
     },

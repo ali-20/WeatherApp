@@ -6,6 +6,7 @@ import Home from '../pages/Home';
 import UpcomingWeatherDetail from '../pages/UpcomingWeatherDetail';
 import WeatherSearch from '../pages/WeatherSearch';
 import Favorites from '../pages/Favorites';
+import WeatherDetails from '../pages/WeatherDetails';
 
 const Stack = createNativeStackNavigator();
 const AppStack =
@@ -24,6 +25,7 @@ const AppStack =
                 <Stack.Screen name={EScreens.UPCOMING_WEATHER_DETAIL} component={UpcomingWeatherDetail}></Stack.Screen>
                 <Stack.Screen name={EScreens.WEATHER_SEARCH} component={WeatherSearch}></Stack.Screen>
                 <Stack.Screen name={EScreens.FAVORITES} component={Favorites}></Stack.Screen>
+                <Stack.Screen name={EScreens.WEATHER_DETAILS} component={WeatherDetails}></Stack.Screen>
             </Stack.Navigator>
 
         )
